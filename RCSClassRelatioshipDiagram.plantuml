@@ -12,7 +12,7 @@ ClassRCS "1"--> "0..1" Transaction: execute
 Transaction <|-- ClassControlStrategy
 Transaction  <|-- ClassTrajectoryProfile
 Transaction<|-- ClassModbusNetControl
-ClassControlStrategy "0..1" --> "1"ClassController
+ClassControlStrategy "0..1" --> "1" ClassController
 ClassControlStrategy "0..1" --> "1"ClassKeypad
 ClassTrajectoryProfile "0..1"--> "1"ClassTrajectoryGenerator
 ClassTrajectoryProfile  "0..1"--> "1" ClassKeypad
