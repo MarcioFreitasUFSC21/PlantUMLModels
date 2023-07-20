@@ -19,4 +19,5 @@ ClassTrajectoryProfile  "0..1"--> "1" ClassKeypad
 Transaction "0..1" --> "1"ClassScreen: showMessage
 Transaction "0..1" --> "1" ClassModbusNet: Acess/Modifies
 ClassEmergencyStop "1"--> "1" ClassModbusNetControl: turnOffRobot
+
 @enduml
