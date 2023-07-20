@@ -1,0 +1,109 @@
+@startuml
+class Screen{
+ +displayMessage():char
+ +drawTrajectoryProfile():void
+}
+
+class OnOffRCS {
+ -OnOffRCS = false: boolean
++onRCS():boolean 
++offRCS():boolean 
+}
+class ModbusNet {
+    -char: slaveNumber
+-deviceAddres:uchar
+-*functionCode:uchar
+-*operationData: uchar
+-*errorCheck = 0x00:uchar
+-isProblem = false: boolean
++requestMasterToSlave(): char 
++receiveSlaveToMaster(): char
+}
+class Controller {
+-controllerType: char
+-proportionalConst: float
+-settlingTime:float
+-overshootPercent: float
+-damperFactor: float
+-naturalFreq: float
+-risingtTime: float
+-isRobotOk: boolean
++readControllerPath():double
++processingControllerPath ():double
++readControllerPath():double
++saveControllerPath ():double
++requestModbusNetData():uchar
++readControlParameters():double
++buildControlCommandPath():uchar
++changeCommandPathToModbus():uchar
++sendModbusControlPath():uchar
++readRobotDataToController():uchar
++processingRobotDataToController():double
++sendRobotDataToDisplay():char
+}
+class Transaction{
++execute():void
+}
+class TrajectoryProfile{
++execute():void
++readProfileOption():double
++sendDisplayProfile():double
++sendControllerFit():double 
+}
+class ControlStrategy{
+-controlstrategyType: char
++execute():void
++readControllerPath():double
++sendTrajectoryFitToControl():double
++sendControllerPath():double
++sendModbusControlPath():uchar
++requestModbusNetData():uchar
++sendRobotDataToController():uchar
++displayMessage():char
+}
+class TrajectoryGenerator{
+-*profileType = 0: char
+-pointNumber: integer =0:char
+-controlPoint = 0.00: float
+-curvature = 0.00: float
++saveProfileOption():char
++processingProfileOption():void
++chargeTrajectoryParameters():double
++isSuficientParameters (): boolean
++buildTrajectoryProfile():void
++sendPathToDisplay():char
+}
+class RCS{
+inicializeModbusNet():char
+readProfileOption():char
+sendProfileOption():char
+readControlStrategyOption():char
+send ControlStrategyOption():char
+}
+class EmergencyStop{
+-keyState = False: boolean
++turnOffRobot():void 
++displayMessage():char
+}
+class Keypad{
+-option = 0: integer
++getInput():uchar
+}
+class ModbusNetControl{
+-slaveNumber: char
+-deviceAddres: char 
+-functionCode:uchar
+-operationData:double
+-errorCheck:char
++processingModbusControlPath():double
++buildModbusControlPath():double
++execute():void
++requestMasterToSlave():uchar
++receiveSlaveToMaster():uchar
+}
+class RCSCaseStudy{
+-startRCS = false: boolean
++mainFunction():void
++activateRCS():void
+}
+@enduml

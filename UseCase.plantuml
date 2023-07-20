@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor RCSTransactions as actions
+package RCS{
+actions ->(Show the Welcome message)
+actions  -> (Inicialize the Modbus Net)
+actions -> (Show the path menu)
+actions  ->(Show the methodology path menu)
+actions -> (Show the control strategy menu)
+actions -> (Show specific messages)
+actions -> (processing option)
+actions -> (Build  robot path)
+actions  -> (Management the robot arm)
+actions  - (Exception Handling)
+(Emergency Stop Handling)
+(Choose the  path  option)
+(Choose the methodology construction path option)
+(Choose the control strategy option)
+(Start RCS)
+(Emergency Stop Handling) .> (Exception Handling): extends
+}
+@enduml
