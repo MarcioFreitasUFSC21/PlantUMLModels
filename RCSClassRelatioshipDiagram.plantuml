@@ -1,0 +1,22 @@
+@startuml
+abstract class Transaction
+ClassRCS "1" *-->  "1" ClassEmergencyStop
+ClassRCS "1" *--> "1" ClassTrajectoryGenerator
+ClassRCS "1" *--> "1" ClassKeypad
+ClassRCS "1" *--> "1" ClassOnOffRCS
+ClassRCS  "1" *-->  "1" ClassScreen
+ClassRCS "1" *--> "1" ClassController
+ClassRCS "1" --> "1"ClassModbusNet:manages
+ClassModbusNet "1" *-->  "1" ClassRobotModel
+ClassRCS "1"--> "0..1" Transaction: execute
+Transaction <|-- ClassControlStrategy
+Transaction  <|-- ClassTrajectoryProfile
+Transaction<|-- ClassModbusNetControl
+ClassControlStrategy "0..1" --> "1"ClassController
+ClassControlStrategy "0..1" --> "1"ClassKeypad
+ClassTrajectoryProfile "0..1"--> "1"ClassTrajectoryGenerator
+ClassTrajectoryProfile  "0..1"--> "1" ClassKeypad
+Transaction "0..1" --> "1"ClassScreen: showMessage
+Transaction "0..1" --> "1" ClassModbusNet: Acess/Modifies
+ClassEmergencyStop "1"--> "1" ClassModbusNetControl: turnOffRobot
+@enduml
